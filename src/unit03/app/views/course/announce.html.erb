@@ -1,0 +1,3 @@
+<% section = "Announcements" %>
+<% content = @time.strftime("The next study date will be: %a %b %d %Y") %>
+<%= render :partial => "shared/master", :locals => {:section => section, :content => content} %>
