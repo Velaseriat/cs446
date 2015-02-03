@@ -1,4 +1,5 @@
 class CourseController < ApplicationController
+
   def eval
   	@body_content = "Student grades will be calculated based on the following:
   		<br>
@@ -15,7 +16,8 @@ class CourseController < ApplicationController
   end
 
   def scores
-  	redirect_to action: "announce", :flash => { :error => "Insufficient rights!" }
+    flash[:notice] = 'The best'
+  	redirect_to "/course/announce"
   end
 
 end
