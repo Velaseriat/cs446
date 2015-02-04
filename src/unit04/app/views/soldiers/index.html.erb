@@ -1,0 +1,31 @@
+<h1>Listing soldiers</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>First name</th>
+      <th>Last name</th>
+      <th>Atk</th>
+      <th>Def</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @soldiers.each do |soldier| %>
+      <tr>
+        <td><%= soldier.first_name %></td>
+        <td><%= soldier.last_name %></td>
+        <td><%= soldier.atk %></td>
+        <td><%= soldier.def %></td>
+        <td><%= link_to 'Show', soldier %></td>
+        <td><%= link_to 'Edit', edit_soldier_path(soldier) %></td>
+        <td><%= link_to 'Destroy', soldier, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Soldier', new_soldier_path %>
