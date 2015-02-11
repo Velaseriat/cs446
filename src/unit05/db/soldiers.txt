@@ -1,0 +1,8 @@
+Attia, Rei, 500, 500, Assassin, 1
+Tanya, Allenmius, 500, 500, Saboteur, 1
+Iris, Atniva, 500, 500, Sorcerer, 1
+Xina, Atali, 500, 500, Templar, 1
+Klair, Enzeia, 500, 500, Juggernaut, 1
+Elni, Lias, 500, 500, Sniper, 1
+Vivienne, Hexill, 500, 500, Synergist, 1
+Andres, Lancaster, 500, 500, Analyst, 1 

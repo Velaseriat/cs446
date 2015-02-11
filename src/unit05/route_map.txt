@@ -1,0 +1,50 @@
+I tested all of the routes, and I apologize for doing the complete opposite of what we were supposed to do.
+
+
+C:\Users\Kelly\Documents\GitHub\cs446\src\unit05>rake routes
+              Prefix Verb   URI Pattern                                       Controller#Action
+    brigade_soldiers GET    /brigades/:brigade_id/soldiers(.:format)          soldiers#index
+                     POST   /brigades/:brigade_id/soldiers(.:format)          soldiers#create
+			DATA	@soldier	= Soldier.new(soldier_params)
+ new_brigade_soldier GET    /brigades/:brigade_id/soldiers/new(.:format)      soldiers#new
+			DATA	@brigade	= Brigade.find(params[:brigade_id])
+			CLICK	Back		Returns to brigades/:brigade_id/
+edit_brigade_soldier GET    /brigades/:brigade_id/soldiers/:id/edit(.:format) soldiers#edit
+			DATA @brigade		= Brigade.find(params[:brigade_id])
+			CLICK	Show		Shows the current soldier
+			CLICK	Back		Returns to brigades/:brigade_id/
+     brigade_soldier GET    /brigades/:brigade_id/soldiers/:id(.:format)      soldiers#show
+			DATA	@brigade	= Brigade.find(params[:brigade_id])
+			DATA	@soldier	= Soldier.find(params[:id])
+			CLICK	Edit		Edits the current soldier
+			CLICK	Back		Returns to brigades/:brigade_id/
+			CLICK	Destroy		Destroys this soldier
+                     PATCH  /brigades/:brigade_id/soldiers/:id(.:format)      soldiers#update
+                     PUT    /brigades/:brigade_id/soldiers/:id(.:format)      soldiers#update
+                     DELETE /brigades/:brigade_id/soldiers/:id(.:format)      soldiers#destroy
+            brigades GET    /brigades(.:format)                               brigades#index
+			DATA	@brigades	= Brigade.all
+			CLICK	Show		Shows soldiers in the brigade
+			CLICK	Edit		Edits the current brigade
+			CLICK	Destroy		Destroys the current brigade
+			CLICK	New Brigade	Creates a new brigade
+                     POST   /brigades(.:format)                               brigades#create
+			DATA	@brigade	= Brigade.new(brigade_params)
+         new_brigade GET    /brigades/new(.:format)                           brigades#new
+			CLICK	Back		Returns to brigades/
+        edit_brigade GET    /brigades/:id/edit(.:format)                      brigades#edit
+			CLICK	Show		Shows soldiers in the brigade
+			CLICK	Back		Returns to brigades/
+             brigade GET    /brigades/:id(.:format)                           brigades#show
+			DATA	@soldiers	= Brigade.find(params[:id]).soldiers.order(:first_name, :last_name)
+			CLICK	Edit		Edits the current brigade
+			ClICK	Back		Returns to brigades/
+			CLICK	Destroy		Destroys the current brigade
+			CLICK	New Soldier	Creates a new soldier
+			[Soldier]
+			CLICK	Show		Shows the soldier's profile
+			CLICK	Edit		Edits the soldier's profile
+			CLICK	Destroy		Destroy this soldier
+                     PATCH  /brigades/:id(.:format)                           brigades#update
+                     PUT    /brigades/:id(.:format)                           brigades#update
+                     DELETE /brigades/:id(.:format)                           brigades#destroy
