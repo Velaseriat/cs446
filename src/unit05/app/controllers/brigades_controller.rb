@@ -1,12 +1,9 @@
-require "yymmdd"
-include YYMMDD
 class BrigadesController < ApplicationController
   before_action :set_brigade, only: [:show, :edit, :update, :destroy]
 
   # GET /brigades
   # GET /brigades.json
   def index
-    @datestr = yyyy/mm/dd
     @brigades = Brigade.all
     if @brigades.length == 0
       @no_brigades = "There are no brigades!"
@@ -17,6 +14,7 @@ class BrigadesController < ApplicationController
   # GET /brigades/1.json
   def show
     @soldiers = Brigade.find(params[:id]).soldiers.order(:first_name, :last_name)
+    @no_soldiers = "There are no soldiers in the brigade!"
   end
 
   # GET /brigades/new

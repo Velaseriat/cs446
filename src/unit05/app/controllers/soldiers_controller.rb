@@ -1,5 +1,6 @@
 class SoldiersController < ApplicationController
   before_action :set_soldier, only: [:show, :edit, :update, :destroy]
+
   # GET /soldiers
   # GET /soldiers.json
   def index
