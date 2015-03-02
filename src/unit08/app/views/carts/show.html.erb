@@ -1,0 +1,37 @@
+<p id="notice"><%= notice %></p>
+
+<%= link_to 'Edit', edit_cart_path(@cart) %> |
+<%= link_to 'Back', root_path %>
+<br>
+
+<h1>Listing pets</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Age</th>
+      <th>Description</th>
+      <th>Pet Type</th>
+      <th>Pet Status</th>
+      <th colspan="2"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @selectedPets.each do |selectedPet| %>
+      <tr>
+        <td><%= selectedPet.pet.name %></td>
+        <td><%= selectedPet.pet.age %></td>
+        <td><%= selectedPet.pet.description %></td>
+        <td><%= selectedPet.pet.pet_type %></td>
+        <td><%= selectedPet.pet.pet_status %></td>
+        <td><%= link_to 'Show', selectedPet.pet %></td>
+        <td><%= link_to 'Remove', selectedPet, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+<%= button_to 'Delete Cart', @cart, method: :delete, data: { confirm: 'Are you sure?' } %>

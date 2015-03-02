@@ -1,0 +1,14 @@
+1.(2) HTTP is a stateless protocol - what does that mean?
+	Means each action taken is unrelated to a previous action, so in this case, each request is independently handled from one another.
+2.(2) What is a session id?
+	A session ID is used to look up the session data on the server in the form of a cookie. This is necessary because HTTP is a stateless protocol and we need a method for a server to realize that a user is the same user during the duration of the users activity.
+3.(4) Explain the relationship between cookies and sessions
+	Cookies are stored on the user's computer and might have session ID information stored on them. In rails, usually a basic rails object is stored and if it gets edited, then rails will just ignore it for security reasons. The session ID will be checked against the server's database. 
+4.(2) Name two guidelines for storing sessions
+	CookieStore saves the session hash directly in a cookie on the client-side.
+	
+5.(4) What is CSRF?
+	Cross-Site Request Forgery. It is an exploit where commands are being made to a website from a trusted user. So basically a hacker can send something as simple as a link to this trusted user, and the trusted user might click on it. Because the trusted user might not have to re-authenticate in order for the link to work, the hacker could gain access to resources without the trusted user's consent.
+6.(4) What steps does Rails take to protect the user from CSRF? Note: You might want to look at application_controller.rb and application.html.erb - after this reading you should understand more about some of the options in these files.
+7.(2) Compare whitelisting to blacklisting. How does this relate to the params hash? (not explicitly mentioned in reading)
+	Blacklist is usually a list of things not allowed on the server. Whitelist is the opposite. 

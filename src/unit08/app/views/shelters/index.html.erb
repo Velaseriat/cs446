@@ -1,0 +1,31 @@
+<h1><% @shelter.name %></h1>
+<h2>Listing pets</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Age</th>
+      <th>Description</th>
+      <th>Pet Type</th>
+      <th>Pet Status</th>
+      <th colspan="1"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @pets.each do |pet| %>
+      <tr>
+        <td><%= pet.name %></td>
+        <td><%= pet.age %></td>
+        <td><%= pet.description %></td>
+        <td><%= pet.pet_type %></td>
+        <td><%= pet.pet_status %></td>
+        <td><%= button_to 'Select Pet', selected_pets_path(pet_id: pet) %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+

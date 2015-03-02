@@ -1,0 +1,5 @@
+1. Rails know what migrations to run by the schema_migrations. When we worked with laravel the schema table listed what migrations were run and when, and I suspect it works the same way here in rails. If one was to revert a migration, then the corresponding migration would be removed from the schema table.
+
+2. The up function contains code for implementing the actual database migration, while down is the opposite, that is capable of undoing what the up function did.
+
+3. An irreversible migration is a migration that contains commands that are not reversible. Something like remove_index cannot be reversed without manual commands. In the API, it states that the down method of irreversible migrations should rase an ActiveRecord::IrreversibleMigration exception.

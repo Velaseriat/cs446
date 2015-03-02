@@ -1,0 +1,36 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  age: MyString
+  description: MyStringMyString
+
+two:
+  name: MyString
+  age: MyString
+  description: MyStringMyString
+
+noname:
+  name:
+  age: MyString
+  description: MyStringMyString
+
+description9:
+  name: MyString
+  age: MyString
+  description: aaaaaaaaa
+
+description10:
+  name: MyString
+  age: MyString
+  description: aaaaaaaaaa
+
+description40:
+  name: MyString
+  age: MyString
+  description: aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+
+description41:
+  name: MyString
+  age: MyString
+  description: aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
