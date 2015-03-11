@@ -1,0 +1,6 @@
+E0000D59AEA87ABB
+6FA1F708D417CA103343DDBF112B53572F1A92A0
+41560855
+08FA87ABB2
+
+bind BUTTON_BACK "zombietron_discovered 1;zombiefive_discovered 1;cg_drawfps 1;player_clipSizeMultiplier 10;perk_weapratemultiplier 0;perk_armorvest 0;perk_weapReloadMultiplier 0.1;Revive_Trigger_Radius 100;player_lastStandBleedoutTime 200;phys_gravity 99;give claymore_zm;give frag_grenade_zm;give m1911_upgraded_zm;give m16_gl_upgraded_zm;give ak74u_upgraded_zm;give mp5k_upgraded_zm;give cz75dw_upgraded_zm;give aug_acog_mk_upgraded_zm;give galil_upgraded_zm;give commando_upgraded_zm;give rpk_upgraded_zm;give hk21_upgraded_zm;give m72_law_upgraded_zm;give zombie_cymbal_monkey;give ray_gun_upgraded_zm;give thundergun_upgraded_zm;give crossbow_explosive_upgraded_zm;give knife_ballistic_bowie_upgraded_zm;give ammo;give player_sprintUnlimited 1;enableDvarWhitelist 0;"

@@ -1,0 +1,7 @@
+00:00 - Opened Google
+00:01 - Googled coffeescript
+01:00 - Got basic syntax
+02:00 - Tried to use CoffeeScript with rails, no luck
+03:00 - Did a different demo thing instead
+04:00 - Starting to write report
+0infinity:00 - done... for so little...
