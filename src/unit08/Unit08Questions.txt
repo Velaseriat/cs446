@@ -10,5 +10,6 @@
 5.(4) What is CSRF?
 	Cross-Site Request Forgery. It is an exploit where commands are being made to a website from a trusted user. So basically a hacker can send something as simple as a link to this trusted user, and the trusted user might click on it. Because the trusted user might not have to re-authenticate in order for the link to work, the hacker could gain access to resources without the trusted user's consent.
 6.(4) What steps does Rails take to protect the user from CSRF? Note: You might want to look at application_controller.rb and application.html.erb - after this reading you should understand more about some of the options in these files.
+Rails takes into account your session ID and makes sure that you were actually online when you make an important request. You can be a trusted user from a trusted computer but if you lack a session ID it won't let it happen.
 7.(2) Compare whitelisting to blacklisting. How does this relate to the params hash? (not explicitly mentioned in reading)
 	Blacklist is usually a list of things not allowed on the server. Whitelist is the opposite. 
