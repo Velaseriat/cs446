@@ -28,6 +28,7 @@ class SelectedPetsController < ApplicationController
   def create
     # pet = Pet.find(selected_pet_params)
     pet = Pet.find(params[:pet_id])
+    @pets = Pet.all
     @selected_pet = @cart.selected_pets.build(pet: pet)
     # @selected_pet = SelectedPet.new(selected_pet_params)
 
