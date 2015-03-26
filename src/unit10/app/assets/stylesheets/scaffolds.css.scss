@@ -83,11 +83,19 @@ div {
     }
 }
 
-.siderbar {
+.cart {
+  float: right;
   border-style: solid;
-  float: left;
+  border-radius: 5px;
+  padding: 5px;
+  width: 250px;;
 }
 
-.body{
-  
+.content{
+  float: auto;
+  width: auto;
+}
+
+h3 {
+  margin-top: 0px;
 }

@@ -36,11 +36,7 @@ class SelectedPetsController < ApplicationController
         pet.pet_status = :selected
         pet.save
         @selected_pet.save
-        format.html { redirect_to @selected_pet.cart, notice: 'Pet was selected' } 
-        format.json { render :show, status: :created, location: @selected_pet }
-      else
-        format.html { redirect_to @cart }
-        format.json { render json: @selected_pet.errors, status: :unprocessable_entity }
+        format.js {}
       end
     end
   end

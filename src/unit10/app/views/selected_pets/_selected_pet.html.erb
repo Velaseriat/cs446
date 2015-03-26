@@ -1,9 +1,4 @@
       <tr>
         <td><%= selected_pet.pet.name %></td>
-        <td><%= selected_pet.pet.age %></td>
-        <td><%= selected_pet.pet.description %></td>
-        <td><%= selected_pet.pet.pet_type %></td>
-        <td><%= selected_pet.pet.pet_status %></td>
-        <td><%= link_to 'Show', selected_pet.pet %></td>
         <td><%= link_to 'Remove', selected_pet, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>

@@ -1,19 +1,11 @@
-
-<%= link_to 'Edit', edit_cart_path(cart) %> |
-<%= link_to 'Back', root_path %>
-<br>
-
-<h1>Listing pets</h1>
-
+<% if @cart.selected_pets.length > 0 %>
+<div class="cart">
+<h3>Selected Pets</h3>
 <table>
   <thead>
     <tr>
       <th>Name</th>
-      <th>Age</th>
-      <th>Description</th>
-      <th>Pet Type</th>
-      <th>Pet Status</th>
-      <th colspan="2"></th>
+      <th colspan="1"></th>
     </tr>
   </thead>
 
@@ -23,4 +15,6 @@
 </table>
 
 <br>
-<%= button_to 'Delete Cart', cart, method: :delete, data: { confirm: 'Are you sure?' } %>
+<%= button_to 'Empty Cart', cart, method: :delete, data: { confirm: 'Are you sure?' } %>
+</div>
+<% end %>

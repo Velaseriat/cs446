@@ -6,5 +6,5 @@
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
-	<div id="content"><%= content_for(:content) ? yield(:content) : yield %></div>
+<%= content_for(:content) ? yield(:content) : yield %>
 </html>
