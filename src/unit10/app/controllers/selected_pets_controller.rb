@@ -34,8 +34,6 @@ class SelectedPetsController < ApplicationController
 
     respond_to do |format|
       if SelectedPet.where(pet_id: pet, cart_id: @cart).count < 1
-        pet.pet_status = :selected
-        pet.save
         @selected_pet.save
         format.js {}
       end
@@ -60,9 +58,6 @@ class SelectedPetsController < ApplicationController
   # DELETE /selected_pets/1.json
   def destroy
     @cart = Cart.find(@selected_pet.cart_id)
-    @pet = Pet.find(@selected_pet.pet_id)
-    @pet.pet_status = :available
-    @pet.save
     @selected_pet.destroy
     if (SelectedPet.where(cart_id: @cart).count == 0)
       @cart.destroy
