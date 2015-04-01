@@ -6,7 +6,14 @@ class Pet < ActiveRecord::Base
 	enum pet_status: [ :adopted, :available, :selected ]
 	validates :name, presence: true
 	validates :description, length: { in: 10..40 }
+	validates :image_file, allow_blank: true, format: {
+      with: %r{\.(gif|jpg|png)\Z}i,
+      message: 'format must be GIF, JPG or PNG'
+  }
 
+	def Pet.get_available_pets
+		Pet.where(pet_status: 1)
+	end
 
 	private 
 	

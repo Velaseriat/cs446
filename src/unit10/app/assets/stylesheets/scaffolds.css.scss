@@ -76,6 +76,8 @@ div {
   text-align: center;
   color: white;
   border-color: black;
+  clear: both;
+  margin: 10px;
     img {
       float: left;
       height: 50px;
@@ -88,6 +90,7 @@ div {
   border-style: solid;
   border-radius: 5px;
   padding: 5px;
+  margin: 5px;
   width: 250px;;
 }
 
@@ -98,4 +101,8 @@ div {
 
 h3 {
   margin-top: 0px;
+}
+
+.pet_image {
+  width: 100px;
 }

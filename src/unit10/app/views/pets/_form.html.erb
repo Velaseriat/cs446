@@ -34,7 +34,10 @@
     <%= f.select :pet_status, @pet_statuses, :selected => @default_val_status %>
   </div>
 
-
+  <div class="field">
+    <%= f.label :image_file %><br>
+    <%= f.text_field :image_file %>
+  </div>
 
   <div class="actions">
     <%= f.submit %>

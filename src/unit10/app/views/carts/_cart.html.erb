@@ -16,5 +16,8 @@
 
 <br>
 <%= button_to 'Empty Cart', cart, method: :delete, data: { confirm: 'Are you sure?' } %>
+<% if(!@adopting) %>
+	<%= button_to 'Adopt!', shelters_adopt_path %>
+<% end %>
 </div>
 <% end %>

@@ -1,1 +1,5 @@
-<%= render template: "pets/index", locals: { pets: @pets} %>
+<% if (@pets.count > 0) %>
+	<%= render template: "pets/index", locals: { pets: @pets} %>
+<% else %>
+	<div>No pets to show!</div>
+<% end %>

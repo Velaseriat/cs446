@@ -8,6 +8,11 @@ Rails.application.routes.draw do
 
   root 'shelters#index'
 
+  post 'shelters/adopt', :controller => 'shelters', :action => 'adopt'
+  get 'shelters/adopt', :controller => 'shelters', :action => 'adopt'
+  post 'shelters/finish', :controller => 'shelters', :action => 'finish'
+  get 'shelters/finish', :controller => 'shelters', :action => 'finish'
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

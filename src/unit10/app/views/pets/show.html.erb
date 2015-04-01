@@ -23,5 +23,10 @@
   <%= @pet.pet_status %>
 </p>
 
+<p>
+  <strong>Pet Image:</strong>
+  <div class="pet_image"><%= image_tag @pet.image_file, {height: 100} %></div>
+</p>
+
 <%= link_to 'Edit', edit_pet_path(@pet) %> |
 <%= link_to 'Back', root_path %>

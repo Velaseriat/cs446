@@ -3,15 +3,51 @@ class SheltersController < ApplicationController
   before_action :set_cart, only: [:create]
   before_action :set_shelter, only: [:show, :edit, :update, :destroy]
 
+  def adopt
+    if (!@cart)
+      set_cart
+    end
+    @adopting = []
+    @cart.selected_pets.each {|p| @adopting << Pet.find(p.pet_id)}
+
+
+
+    respond_to do |format|
+      if (@adopting.count > 0)
+        format.html { render :adopt }
+      else
+        format.html { redirect_to :root }
+      end
+    end
+  end
+
+  def finish
+    if (!@cart)
+      set_cart
+    end
+    @cart.selected_pets.each do |p|
+      pet = Pet.find(p.pet_id)
+      pet.pet_status = :adopted
+      pet.save
+    end
+    @cart.destroy
+    respond_to do |format|
+      format.html { redirect_to :root }
+    end
+  end
+
+
+
+
   # GET /shelters
   # GET /shelters.json
   def index
     @shelter = Shelter.first
-    @pets = Pet.all.order(:pet_type)
+    @pets = Pet.get_available_pets.order(:pet_type)
     if (!@cart)
       set_cart
     end
-    @selectedPets = @cart.selected_pets;
+    @selectedPets = @cart.selected_pets
   end
 
   # GET /shelters/1
