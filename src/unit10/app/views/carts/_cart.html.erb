@@ -15,11 +15,9 @@
 </table>
 
 <br>
-<div class="buttons">
-  <div class="b1"><%= button_to 'Empty Cart', cart, method: :delete, data: { confirm: 'Are you sure?' } %></div>
-  <% if(!@adopting) %>
-	 <div class="b2"><%= button_to 'Adopt!', shelters_adopt_path %></div>
-  <% end %>
-</div>
+<%= button_to 'Empty Cart', cart, method: :delete, data: { confirm: 'Are you sure?' } %>
+<% if(!@adopting) %>
+	<%= button_to 'Adopt!', shelters_adopt_path %>
+<% end %>
 </div>
 <% end %>
