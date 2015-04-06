@@ -1,0 +1,14 @@
+
+      <tr>
+        <td><%= pet.name %></td>
+        <td><%= pet.age %></td>
+        <td><%= pet.description %></td>
+        <td><%= pet.pet_type %></td>
+        <% if(!@adopting) %>
+        	<td><%= pet.pet_status %></td>
+        <% end %>
+        <td class="pet_image"><%= image_tag pet.image_file, {height: 100} %></td>
+        <% if(!@adopting) %>
+        	<td><%= button_to 'Select Pet', selected_pets_path(pet_id: pet), remote: true%></td>
+        <% end %>
+      </tr>

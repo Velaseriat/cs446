@@ -1,0 +1,24 @@
+<h2>Adopt These Pets!</h2>
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Age</th>
+      <th>Description</th>
+      <th>Pet Type</th>
+      <th>Pet Image</th>
+    </tr>
+  </thead>
+
+  <tbody id="the_pets">
+    <%= render(@adopting) %>
+  </tbody>
+</table>
+
+<p>
+  <div>You should take good care of the crittahzzzzzz!</div>
+  <%= button_to 'I AGREE!', shelters_finish_path %>
+  <%= link_to "I can't do it!", shelters_path %>
+</p>
+
+<br>

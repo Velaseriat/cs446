@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<p id="notice"><%= notice %></p>
+<p id="alert"><%= alert %></p>
+<head>
+  <title>Unit08</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+<% if !user_signed_in? %>
+	<%= link_to 'Sign In!', new_user_session_path %>
+<% end %>
+<%= content_for(:content) ? yield(:content) : yield %>
+</html>

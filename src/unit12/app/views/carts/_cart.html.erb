@@ -1,0 +1,23 @@
+<% if @cart.selected_pets.length > 0 %>
+<div class="cart">
+<h3>Selected Pets</h3>
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th colspan="1"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <%= render(@cart.selected_pets) %>
+  </tbody>
+</table>
+
+<br>
+<%= button_to 'Empty Cart', cart, method: :delete, data: { confirm: 'Are you sure?' } %>
+<% if(!@adopting) %>
+	<%= button_to 'Adopt!', shelters_adopt_path %>
+<% end %>
+</div>
+<% end %>

@@ -1,0 +1,32 @@
+<p>
+  <strong>Name:</strong>
+  <%= @pet.name %>
+</p>
+
+<p>
+  <strong>Age:</strong>
+  <%= @pet.age %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @pet.description %>
+</p>
+
+<p>
+  <strong>Pet Type:</strong>
+  <%= @pet.pet_type %>
+</p>
+
+<p>
+  <strong>Pet Status:</strong>
+  <%= @pet.pet_status %>
+</p>
+
+<p>
+  <strong>Pet Image:</strong>
+  <div class="pet_image"><%= image_tag @pet.image_file, {height: 100} %></div>
+</p>
+
+<%= link_to 'Edit', edit_pet_path(@pet) %> |
+<%= link_to 'Back', root_path %>
