@@ -9,6 +9,12 @@
         <% end %>
         <td class="pet_image"><%= image_tag pet.image_file, {height: 100} %></td>
         <% if(!@adopting) %>
-        	<td><%= button_to 'Select Pet', selected_pets_path(pet_id: pet), remote: true%></td>
+            <% if user_signed_in? %>
+                <% if current_user.admin? %>
+        	       <td><%= button_to 'Edit Pet', edit_pet_path(pet), :method => :get %></td>
+                <% else %>
+                    <td><%= button_to 'Select Pet', selected_pets_path(pet_id: pet), remote: true%></td>
+                <% end %>
+            <% end %>
         <% end %>
       </tr>

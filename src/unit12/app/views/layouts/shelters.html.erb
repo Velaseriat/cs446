@@ -1,17 +1,15 @@
 <% content_for :content do %>
-<body>
-	<%= render :partial => "shared/header" %>
+
 	<div class="container">
 		<div class="sidebar">
-			<%= render @cart %>
+			<% if user_signed_in? %>
+				<%= render @cart %>
+			<% end %>
 		</div>
 		<div class="content">
 			<%= yield %>
 		</div>
 	</div>
-	<br>
-	<br>
-	<%= render :partial => "shared/footer" %>
-</body>
+	
 <% end %>
 <%= render template: "layouts/application" %>

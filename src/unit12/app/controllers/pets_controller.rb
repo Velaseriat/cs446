@@ -4,6 +4,11 @@ class PetsController < ApplicationController
   # GET /pets
   # GET /pets.json
   def index
+    if !current_user
+      redirect_to :root
+    elsif current_user.user?
+      redirect_to :root
+    end
     @pets = Pet.all
   end
 
@@ -14,35 +19,47 @@ class PetsController < ApplicationController
 
   # GET /pets/new
   def new
-    @pet = Pet.new
-    @pet_types = [:cat, :dog, :bunny]
-    @default_val = :bunny
-    @pet_statuses = [:adopted, :available, :selected]
-    @default_val_status = :available
+    if !current_user
+      redirect_to :root
+    elsif current_user.user?
+      redirect_to :root
+    else
+      @pet = Pet.new
+      @pet_types = [:cat, :dog, :bunny]
+      @default_val = :bunny
+      @pet_statuses = [:adopted, :available, :selected]
+      @default_val_status = :available
+    end
   end
 
   # GET /pets/1/edit
   def edit
-    @pet_types = [:cat, :dog, :bunny]
-    @default_val = @pet.pet_type
-    @pet_statuses = [:adopted, :available, :selected]
-    @default_val_status = @pet.pet_status
+    if !current_user
+      redirect_to :root
+    elsif current_user.user?
+      redirect_to :root
+    else
+      @pet_types = [:cat, :dog, :bunny]
+      @default_val = @pet.pet_type
+      @pet_statuses = [:adopted, :available, :selected]
+      @default_val_status = @pet.pet_status
+    end
   end
 
   # POST /pets
   # POST /pets.json
   def create
-    @pet = Pet.new(pet_params)
+      @pet = Pet.new(pet_params)
 
-    respond_to do |format|
-      if @pet.save
-        format.html { redirect_to @pet, notice: 'Pet was successfully created.' }
-        format.json { render :show, status: :created, location: @pet }
-      else
-        format.html { render :new }
-        format.json { render json: @pet.errors, status: :unprocessable_entity }
+      respond_to do |format|
+        if @pet.save
+          format.html { redirect_to @pet, notice: 'Pet was successfully created.' }
+          format.json { render :show, status: :created, location: @pet }
+        else
+          format.html { render :new }
+          format.json { render json: @pet.errors, status: :unprocessable_entity }
+        end
       end
-    end
   end
 
   # PATCH/PUT /pets/1

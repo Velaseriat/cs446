@@ -11,7 +11,13 @@
 <% if !user_signed_in? %>
 	<%= link_to 'Sign In!', new_user_session_path %>
 <% else %>
-	<%= link_to "Sign the fuck out!", destroy_user_session_path, :method => :delete %>
+	<%= link_to "Sign OUUTT!", destroy_user_session_path, :method => :delete %>
 <% end %>
-<%= content_for(:content) ? yield(:content) : yield %>
+<body>
+	<%= render :partial => "shared/header" %>
+	<%= content_for(:content) ? yield(:content) : yield %>
+	<br>
+	<br>
+	<%= render :partial => "shared/footer" %>
+</body>
 </html>
