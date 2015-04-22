@@ -1,0 +1,27 @@
+<h1>Listing filedownloads</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>User</th>
+      <th>Fileupload</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @filedownloads.each do |filedownload| %>
+      <tr>
+        <td><%= filedownload.user_id %></td>
+        <td><%= filedownload.fileupload_id %></td>
+        <td><%= link_to 'Show', filedownload %></td>
+        <td><%= link_to 'Edit', edit_filedownload_path(filedownload) %></td>
+        <td><%= link_to 'Destroy', filedownload, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Filedownload', new_filedownload_path %>
