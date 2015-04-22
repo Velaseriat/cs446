@@ -1,19 +1,11 @@
-<p id="notice"><%= notice %></p>
-
-<p>
-  <strong>User:</strong>
-  <%= @comment.user_id %>
-</p>
-
-<p>
-  <strong>Filedownload:</strong>
-  <%= @comment.filedownload_id %>
-</p>
-
-<p>
-  <strong>Data:</strong>
-  <%= @comment.data %>
-</p>
-
-<%= link_to 'Edit', edit_comment_path(@comment) %> |
-<%= link_to 'Back', comments_path %>
+<div class="container-fluid">
+	<div class="row-fluid">
+		<div class="span12">
+			<div><%= @comment.user.first_name + " " + @comment.user.last_name %></div>
+			<div class="row-fluid">
+				<div class = "span10"><%= @comment.data %></div>
+				<div class = "span2"><%= link_to 'Edit', edit_comment_path(@comment) %> | <%= link_to 'Back', comments_path %></div>
+			</div>
+		</div>
+	</div>
+</div>
