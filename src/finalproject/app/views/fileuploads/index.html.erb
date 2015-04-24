@@ -1,6 +1,5 @@
 <h1>Listing fileuploads</h1>
-
-<table>
+<table class="table table-bordered">
   <thead>
     <tr>
       <th>User</th>
@@ -12,11 +11,24 @@
   <tbody>
     <% @fileuploads.each do |fileupload| %>
       <tr>
-        <td><%= fileupload.user_id %></td>
-        <td><%= fileupload.filename %></td>
-        <td><%= link_to 'Show', fileupload %></td>
-        <td><%= link_to 'Edit', edit_fileupload_path(fileupload) %></td>
-        <td><%= link_to 'Destroy', fileupload, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      <td><%= fileupload.user_id %></td>
+      <td><%= fileupload.filename %></td>
+      <% if current_user %>
+        <td>
+          <%= link_to '', fileupload.filedownload, :class => "glyphicon glyphicon-expand" %>
+          <%= link_to 'Download', fileupload.filedownload %>
+        </td>
+      <% end %>
+      <% if current_user and current_user.admin? %>
+        <td>
+          <%= link_to '', fileupload, :class => "glyphicon glyphicon-edit" %>
+          <%= link_to 'Edit', edit_fileupload_path(fileupload) %>
+        </td>
+        <td>
+          <%= link_to '', fileupload, :class => "glyphicon glyphicon-trash" %>
+          <%= link_to 'Remove', fileupload, method: :delete, data: { confirm: 'Are you sure?' } %>
+        </td>
+      <% end %>
       </tr>
     <% end %>
   </tbody>
