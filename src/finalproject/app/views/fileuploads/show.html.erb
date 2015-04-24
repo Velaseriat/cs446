@@ -1,14 +1,26 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>User:</strong>
-  <%= @fileupload.user_id %>
+  <strong>Uploader:</strong>
+  <%= link_to @fileupload.user.first_name + " " + @fileupload.user.last_name, @fileupload.user %>
 </p>
 
 <p>
   <strong>Filename:</strong>
   <%= @fileupload.filename %>
 </p>
+<% if !@new_file_download %>
+	<%= render @filedownload %>
+<% end %>
 
-<%= link_to 'Edit', edit_fileupload_path(@fileupload) %> |
-<%= link_to 'Back', fileuploads_path %>
+<% if user_signed_in? %>
+	<%= form_for(@filedownload) do |f| %>
+    	<%= f.hidden_field :user_id, :value => current_user.id %>
+    	<%= f.hidden_field :fileupload_id, :value => @fileupload.id %>
+    	<%= f.submit "Download this shit?" %>
+    	<% if current_user.admin? %>
+			<%= link_to 'Edit', edit_fileupload_path(@fileupload) %> |
+			<%= link_to 'Back', fileuploads_path %>
+		<% end %>
+	<% end %>
+<% end %>

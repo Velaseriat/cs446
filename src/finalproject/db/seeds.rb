@@ -15,8 +15,8 @@ User.create! :first_name => "User", :last_name => "4", :age => 16, :email => "us
 
 
 Fileupload.create(:user_id => 2, :filename => File.open(File.join(Rails.root, "public/files/images/6.jpg")))
-Fileupload.create(:user_id => 2, :filename => File.open(File.join(Rails.root, "public/files/images/6.jpg")))
-Fileupload.create(:user_id => 2, :filename => File.open(File.join(Rails.root, "public/files/images/6.jpg")))
+Fileupload.create(:user_id => 2, :filename => File.open(File.join(Rails.root, "public/files/images/5.jpg")))
+Fileupload.create(:user_id => 2, :filename => File.open(File.join(Rails.root, "public/files/images/4.jpg")))
 
 Filedownload.create(:user_id => 3, :fileupload_id => 1)
 Filedownload.create(:user_id => 2, :fileupload_id => 2)

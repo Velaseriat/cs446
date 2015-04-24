@@ -10,6 +10,12 @@ class FileuploadsController < ApplicationController
   # GET /fileuploads/1
   # GET /fileuploads/1.json
   def show
+    @filedownload = @fileupload.filedownload
+    @new_file_download = false
+    if (!@filedownload)
+      @filedownload = Filedownload.new
+      @new_file_download = true
+    end
   end
 
   # GET /fileuploads/new
