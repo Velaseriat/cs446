@@ -1,14 +1,20 @@
-<p id="notice"><%= notice %></p>
-
-<p>
-  <strong>User:</strong>
-  <%= @filedownload.user_id %>
-</p>
-
-<p>
-  <strong>Fileupload:</strong>
-  <%= @filedownload.fileupload_id %>
-</p>
-
-<%= link_to 'Edit', edit_filedownload_path(@filedownload) %> |
-<%= link_to 'Back', filedownloads_path %>
+<div class="panel panel-default">
+	<div class="panel-body">
+		<%= link_to '', filedownload_path, :class => "glyphicon glyphicon-expand" %>
+		<strong><%= @fileupload.filename %></strong>
+		<br><br>
+		<%= render @comments %>
+		<% if user_signed_in? %>
+			<% if current_user.admin? or current_user == filedownload.user %>
+    			<%= form_for(@comment) do |f| %>
+    				<%= f.hidden_field :user_id, :value => current_user.id %>
+    				<%= f.hidden_field :filedownload_id, :value => @filedownload.id %>
+  					<div class="input-group">
+    					<%= f.text_field :data, :class => "form-control", :placeholder => "Add comment", :text => "text" %>
+    					<span class="input-group-btn"><%= f.submit "Add", :class => "btn btn-default" %></span>
+    				</div>
+    			<% end %>
+    		<% end %>
+    	<% end %>
+	</div>
+</div>

@@ -12,6 +12,9 @@ Rails.application.routes.draw do
 
   root 'filefantasies#index'
 
+  post 'filedownloads/make_comment', :controller => 'filedownloads', :action => 'make_comment'
+  get 'filedownloads/make_comment', :controller => 'filedownloads', :action => 'make_comment'
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

@@ -1,6 +1,13 @@
 class FiledownloadsController < ApplicationController
   before_action :set_filedownload, only: [:show, :edit, :update, :destroy]
 
+  def make_comment fd
+    respond_to do |format|
+      format.html { redirect_to fd }
+    end
+  end
+
+
   # GET /filedownloads
   # GET /filedownloads.json
   def index
@@ -10,6 +17,10 @@ class FiledownloadsController < ApplicationController
   # GET /filedownloads/1
   # GET /filedownloads/1.json
   def show
+    @comment = Comment.new
+    @comments = Filedownload.find(params[:id]).comments
+    @fileupload = Filedownload.find(params[:id]).fileupload
+    set_filedownload
   end
 
   # GET /filedownloads/new

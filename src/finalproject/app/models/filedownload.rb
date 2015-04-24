@@ -1,4 +1,5 @@
 class Filedownload < ActiveRecord::Base
 	belongs_to :user
-	has_one :fileupload
+	belongs_to :fileupload
+	has_many :comments
 end
