@@ -5,6 +5,7 @@ class FilefantasiesController < ApplicationController
   # GET /filefantasies.json
   def index
     @filefantasies = Filefantasy.all
+    @filedownloads = Filedownload.all
   end
 
   # GET /filefantasies/1
