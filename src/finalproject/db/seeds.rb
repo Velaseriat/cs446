@@ -8,15 +8,16 @@
 Filefantasy.create()
 
 User.create! :first_name => "Admin", :last_name => "Strator", :age => 16, :email => "admin@mines.edu", :password => "administrator", :password_confirmation => "administrator", :user_type => :admin
-User.create! :first_name => "User", :last_name => "Plastic", :age => 16, :email => "user1@mines.edu", :password => "user1user1", :password_confirmation => "user1user1", :user_type => :user
-User.create! :first_name => "User", :last_name => "Trash", :age => 16, :email => "user2@mines.edu", :password => "user1user2", :password_confirmation => "user1user2", :user_type => :user
-User.create! :first_name => "User", :last_name => "Floating", :age => 16, :email => "user3@mines.edu", :password => "user1user3", :password_confirmation => "user1user3", :user_type => :user
-User.create! :first_name => "User", :last_name => "Wind", :age => 16, :email => "user4@mines.edu", :password => "user1user4", :password_confirmation => "user1user4", :user_type => :user
+User.create! :first_name => "Kyle", :last_name => "Plastic", :age => 16, :email => "user1@mines.edu", :password => "user1user1", :password_confirmation => "user1user1", :user_type => :user
+User.create! :first_name => "Jim", :last_name => "Trash", :age => 16, :email => "user2@mines.edu", :password => "user1user2", :password_confirmation => "user1user2", :user_type => :user
+User.create! :first_name => "Joe", :last_name => "Floating", :age => 16, :email => "user3@mines.edu", :password => "user1user3", :password_confirmation => "user1user3", :user_type => :user
+User.create! :first_name => "Rob", :last_name => "Wind", :age => 16, :email => "user4@mines.edu", :password => "user1user4", :password_confirmation => "user1user4", :user_type => :user
 
 
 Fileupload.create(:user_id => 2, :filename => File.open(File.join(Rails.root, "public/files/images/6.jpg")))
 Fileupload.create(:user_id => 2, :filename => File.open(File.join(Rails.root, "public/files/images/5.jpg")))
-Fileupload.create(:user_id => 2, :filename => File.open(File.join(Rails.root, "public/files/images/4.jpg")))
+sleep(1) # to show sort on time
+Fileupload.create(:user_id => 3, :filename => File.open(File.join(Rails.root, "public/files/images/4.jpg")))
 
 Filedownload.create(:user_id => 3, :fileupload_id => 1)
 Filedownload.create(:user_id => 2, :fileupload_id => 2)
