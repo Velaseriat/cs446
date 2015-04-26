@@ -4,7 +4,9 @@ class FileuploadsController < ApplicationController
   # GET /fileuploads
   # GET /fileuploads.json
   def index
-    @fileuploads = Fileupload.all
+    params[:direction] ||= "asc"
+    params[:sort] ||= "filename"
+    @fileuploads = Fileupload.includes(:user).order(params[:sort] + " " + params[:direction]).limit(25)
   end
 
   # GET /fileuploads/1
@@ -75,6 +77,6 @@ class FileuploadsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def fileupload_params
-      params.require(:fileupload).permit(:user_id, :filename)
+      params.require(:fileupload).permit(:user_id, :filename, :sort, :direction)
     end
 end
