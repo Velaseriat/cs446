@@ -32,33 +32,26 @@ class FiledownloadsController < ApplicationController
   def edit
   end
 
+  def download_file fn
+    send_file File.join(Rails.root, 'public/' + fn.fileupload.filename.to_s), :x_sendfile=>true
+  end
+
   # POST /filedownloads
   # POST /filedownloads.json
   def create
     @filedownload = Filedownload.new(filedownload_params)
-
-    respond_to do |format|
-      if @filedownload.save
-        format.html { redirect_to @filedownload, notice: 'Filedownload was successfully created.' }
-        format.json { render :show, status: :created, location: @filedownload }
-      else
-        format.html { render :new }
-        format.json { render json: @filedownload.errors, status: :unprocessable_entity }
-      end
+    if @filedownload.save
+      download_file @filedownload
     end
+
   end
 
   # PATCH/PUT /filedownloads/1
   # PATCH/PUT /filedownloads/1.json
   def update
-    respond_to do |format|
-      if @filedownload.update(filedownload_params)
-        format.html { redirect_to @filedownload, notice: 'Filedownload was successfully updated.' }
-        format.json { render :show, status: :ok, location: @filedownload }
-      else
-        format.html { render :edit }
-        format.json { render json: @filedownload.errors, status: :unprocessable_entity }
-      end
+    download_file @filedownload
+    if @filedownload.update(filedownload_params)
+       download_file @filedownload
     end
   end
 
