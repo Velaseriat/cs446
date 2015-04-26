@@ -1,27 +1,34 @@
-<h1>Listing filedownloads</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th>User</th>
-      <th>Fileupload</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @filedownloads.each do |filedownload| %>
-      <tr>
-        <td><%= filedownload.user_id %></td>
-        <td><%= filedownload.fileupload_id %></td>
-        <td><%= link_to 'Show', filedownload %></td>
-        <td><%= link_to 'Edit', edit_filedownload_path(filedownload) %></td>
-        <td><%= link_to 'Destroy', filedownload, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New Filedownload', new_filedownload_path %>
+<div class="panel panel-default">
+  <div class="panel-heading">File Downloads</div>
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th>Filename</th>
+          <th colspan="3"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @filedownloads.each do |filedownload| %>
+          <tr>
+            <td><%= filedownload.fileupload.filename %></td>
+            <% if user_signed_in? %>
+              <td>
+                <%= link_to '', filedownload, :class => "glyphicon glyphicon-expand" %>
+                <%= link_to 'Download', filedownload %>
+              </td>
+            <% end %>
+            <% if user_signed_in? and (current_user.admin? or current_user.id == filedownload.fileupload.user_id) %>
+              <td>
+                <%= link_to '', edit_filedownload_path(fileupload), :class => "glyphicon glyphicon-edit" %>
+                <%= link_to 'Edit', edit_filedownload_path(fileupload) %>
+              </td>
+              <td>
+                <%= link_to '', filedownload, :class => "glyphicon glyphicon-trash" %>
+                <%= link_to 'Remove', filedownload, method: :delete, data: { confirm: 'Are you sure?' } %>
+              </td>
+            <% end %>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>

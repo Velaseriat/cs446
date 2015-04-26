@@ -17,7 +17,7 @@
 	<%= form_for(@filedownload) do |f| %>
     	<%= f.hidden_field :user_id, :value => current_user.id %>
     	<%= f.hidden_field :fileupload_id, :value => @fileupload.id %>
-    	<%= f.submit "Download this shit?" %>
+    	<%= f.submit "Download" %>
     	<% if current_user.admin? %>
 			<%= link_to 'Edit', edit_fileupload_path(@fileupload) %> |
 			<%= link_to 'Back', fileuploads_path %>

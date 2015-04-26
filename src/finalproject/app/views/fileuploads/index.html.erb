@@ -1,35 +1,35 @@
-<h1>Listing fileuploads</h1>
-<table class="table table-bordered">
-  <thead>
-    <tr>
-      <th>User</th>
-      <th>Filename</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody class="panel">
-    <% @fileuploads.each do |fileupload| %>
-      <tr>
-      <td><%= fileupload.user_id %></td>
-      <td><%= fileupload.filename %></td>
-      <% if current_user %>
-        <td>
-          <%= link_to '', fileupload.filedownload, :class => "glyphicon glyphicon-expand" %>
-          <%= link_to 'Download', fileupload.filedownload %>
-        </td>
-      <% end %>
-      <% if current_user and current_user.admin? %>
-        <td>
-          <%= link_to '', fileupload, :class => "glyphicon glyphicon-edit" %>
-          <%= link_to 'Edit', edit_fileupload_path(fileupload) %>
-        </td>
-        <td>
-          <%= link_to '', fileupload, :class => "glyphicon glyphicon-trash" %>
-          <%= link_to 'Remove', fileupload, method: :delete, data: { confirm: 'Are you sure?' } %>
-        </td>
-      <% end %>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+<div class="panel panel-default">
+  <div class="panel-heading">File Uploads</div>
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th>Filename</th>
+          <th colspan="3"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @fileuploads.each do |fileupload| %>
+          <tr>
+            <td><%= fileupload.filename %></td>
+            <% if user_signed_in? %>
+               <td>
+                 <%= link_to '', fileupload, :class => "glyphicon glyphicon-expand" %>
+                 <%= link_to 'Download', fileupload %>
+               </td>
+             <% end %>
+             <% if user_signed_in? and (current_user.admin? or current_user.id == fileupload.user_id) %>
+               <td>
+                 <%= link_to '', edit_fileupload_path(fileupload), :class => "glyphicon glyphicon-edit" %>
+                 <%= link_to 'Edit', edit_fileupload_path(fileupload) %>
+               </td>
+               <td>
+                 <%= link_to '', fileupload, :class => "glyphicon glyphicon-trash" %>
+                 <%= link_to 'Remove', fileupload, method: :delete, data: { confirm: 'Are you sure?' } %>
+               </td>
+             <% end %>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+  
