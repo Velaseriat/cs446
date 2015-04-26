@@ -19,8 +19,8 @@
             <% end %>
             <% if user_signed_in? and (current_user.admin? or current_user.id == filedownload.fileupload.user_id) %>
               <td>
-                <%= link_to '', edit_filedownload_path(fileupload), :class => "glyphicon glyphicon-edit" %>
-                <%= link_to 'Edit', edit_filedownload_path(fileupload) %>
+                <%= link_to '', edit_filedownload_path(filedownload), :class => "glyphicon glyphicon-edit" %>
+                <%= link_to 'Edit', edit_filedownload_path(filedownload) %>
               </td>
               <td>
                 <%= link_to '', filedownload, :class => "glyphicon glyphicon-trash" %>
