@@ -12,14 +12,12 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :user_id %><br>
-    <%= f.number_field :user_id %>
+    <%= f.hidden_field :user_id, :value => current_user.id %>
   </div>
   <div class="field">
-    <%= f.label :filename %><br>
-    <%= f.text_field :filename %>
+    <%= f.file_field :filename %>
   </div>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit "Upload File"%>
   </div>
 <% end %>
