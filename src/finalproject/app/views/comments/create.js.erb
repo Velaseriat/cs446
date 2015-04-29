@@ -1,0 +1,1 @@
+$('.comments' + <%= @comment.filedownload.id.to_s %>).html("<%= escape_javascript(render @comment.filedownload.comments) %>");
