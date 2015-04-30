@@ -9,6 +9,7 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+	<h2>
 	<% if !user_signed_in? %>
 		<%= link_to 'Sign IN!', new_user_session_path %>
 	<% else %>
@@ -17,10 +18,12 @@
 		
 	<% end %>
 	| <%= link_to 'DOWNLOADABLE FILES', fileuploads_path %>
-	| <%= link_to 'HOME', :root %>
+	| <%= link_to 'HOME', :root %></h2>
 <div class="container">
 	<div class="jumbotron">
+		<layer id="bannerAd"></layer><div id="banner1"></div>
 		<%= yield %>
+		<layer id="bannerAd"></layer><div id="banner2"></div>
 	</div>
 </div>
 
@@ -82,3 +85,40 @@
 
 </body>
 </html>
+
+<script language="JavaScript1.2">
+
+var howOften = 5; //number often in seconds to rotate
+var current = 0; //start the counter at 0
+var ns6 = document.getElementById&&!document.all; //detect netscape 6
+
+// place your images, text, etc in the array elements here
+var items = new Array();
+    items[0]="<a href='http://www.minecraftforum.net/' ><img alt='image0 (9K)' src='http://i.imgur.com/uDq51Ao.gif' height='90' width='728' border='0' /></a>"; //a linked image
+
+   items[1]="<a href='http://www.imdb.com/title/tt0149460/'><img alt='image1 (9K)' src='http://static.fjcdn.com/pictures/Xd+an+ad+i+saw+on+roblox_68300f_5233590.jpg' height='90' width='728' border='0' /></a>"; //a linked image
+
+    items[2]="<a href='www.netflix.com'><img alt='image2 (9K)' src='https://daveg227.files.wordpress.com/2006/12/netflix3.gif' height='90' width='728' border='0' /></a>"; //a linked image
+
+    items[3]="<a href='https://www.facebook.com/ClashofClans'><img alt='image3 (9K)' src='http://sharescamreviews.com/wp-content/uploads/2013/07/Clash-Of-Clans-Secrets.gif' height='90' width='728' border='0' /></a>"; //a linked  image
+
+
+
+function rotater() {
+    if(document.layers) {
+        document.placeholderlayer.document.write(items[current]);
+        document.placeholderlayer.document.close();
+    }
+    if(ns6)document.getElementById("banner1").innerHTML=items[current]
+        if(document.all)
+            placeholderdiv.innerHTML=items[current];
+
+    if(ns6)document.getElementById("banner2").innerHTML=items[current]
+        if(document.all)
+            placeholderdiv.innerHTML=items[current];
+    current = (current==items.length-1) ? 0 : current + 1; //increment or reset
+    setTimeout("rotater()",howOften*2000);
+}
+window.onload=rotater;
+//-->
+</script>
