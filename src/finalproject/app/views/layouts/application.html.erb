@@ -87,7 +87,7 @@ function rotater() {
         if(document.all)
             placeholderdiv.innerHTML=items[current];
     current = (current==items.length-1) ? 0 : current + 1; //increment or reset
-    setTimeout("rotater()",howOften*500);
+    setTimeout("rotater()",howOften*2500);
 }
 window.onload=rotater;
 //-->
