@@ -6,6 +6,7 @@ class User < ActiveRecord::Base
 	has_many :filedownloads
 	has_many :fileuploads
   acts_as_voter
+  before_save :set_default_type
 
 	enum user_type: [ :admin, :user ]
 

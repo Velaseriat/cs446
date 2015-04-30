@@ -28,6 +28,10 @@ class FiledownloadsController < ApplicationController
   def edit
     if !user_signed_in?
       redirect_to :root
+    else
+      if current_user.user?
+        redirect_to :root
+      end
     end
   end
 
@@ -39,14 +43,14 @@ class FiledownloadsController < ApplicationController
     @fileupload = Filedownload.find(params[:id]).fileupload
     @fileupload.undisliked_by current_user
     @fileupload.liked_by current_user
-    redirect_to @fileupload
+    redirect_to request.referrer
   end
 
   def downvote
     @fileupload = Filedownload.find(params[:id]).fileupload
     @fileupload.unliked_by current_user
     @fileupload.disliked_by current_user
-    redirect_to @fileupload
+    redirect_to request.referrer
   end
 
   # POST /filedownloads
@@ -59,7 +63,6 @@ class FiledownloadsController < ApplicationController
     if @filedownload.save
       download_file @filedownload
     end
-
   end
 
   # PATCH/PUT /filedownloads/1
@@ -67,6 +70,10 @@ class FiledownloadsController < ApplicationController
   def update
     if !user_signed_in?
       redirect_to :root
+    else
+      if current_user.user?
+        redirect_to :root
+      end
     end
     download_file @filedownload
     if @filedownload.update(filedownload_params)
@@ -79,6 +86,10 @@ class FiledownloadsController < ApplicationController
   def destroy
     if !user_signed_in?
       redirect_to :root
+    else
+      if current_user.user?
+        redirect_to :root
+      end
     end
     @filedownload.destroy
     respond_to do |format|

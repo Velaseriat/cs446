@@ -4,7 +4,12 @@ class FilefantasiesController < ApplicationController
   # GET /filefantasies
   # GET /filefantasies.json
   def index
-    @filedownloads = Filedownload.all
+    if user_signed_in?
+      if !current_user.first_name?
+        redirect_to edit_user_path(current_user)
+      end
+    end
+    @filedownloads = Filedownload.all.limit(10)
   end
 
   # GET /filefantasies/1
@@ -12,6 +17,15 @@ class FilefantasiesController < ApplicationController
   def show
     if !user_signed_in?
       redirect_to :root
+    else
+      if current_user.user?
+        redirect_to :root
+      end
+    end
+    if user_signed_in?
+      if !current_user.first_name?
+        redirect_to edit_user_path(current_user)
+      end
     end
   end
 
@@ -19,6 +33,15 @@ class FilefantasiesController < ApplicationController
   def new
     if !user_signed_in?
       redirect_to :root
+    else
+      if current_user.user?
+        redirect_to :root
+      end
+    end
+    if user_signed_in?
+      if !current_user.first_name?
+        redirect_to edit_user_path(current_user)
+      end
     end
     @filefantasy = Filefantasy.new
   end
@@ -27,6 +50,15 @@ class FilefantasiesController < ApplicationController
   def edit
     if !user_signed_in?
       redirect_to :root
+    else
+      if current_user.user?
+        redirect_to :root
+      end
+    end
+    if user_signed_in?
+      if !current_user.first_name?
+        redirect_to edit_user_path(current_user)
+      end
     end
   end
 
@@ -35,6 +67,15 @@ class FilefantasiesController < ApplicationController
   def create
     if !user_signed_in?
       redirect_to :root
+    else
+      if current_user.user?
+        redirect_to :root
+      end
+    end
+    if user_signed_in?
+      if !current_user.first_name?
+        redirect_to edit_user_path(current_user)
+      end
     end
     @filefantasy = Filefantasy.new(filefantasy_params)
 
@@ -54,6 +95,15 @@ class FilefantasiesController < ApplicationController
   def update
     if !user_signed_in?
       redirect_to :root
+    else
+      if current_user.user?
+        redirect_to :root
+      end
+    end
+    if user_signed_in?
+      if !current_user.first_name?
+        redirect_to edit_user_path(current_user)
+      end
     end
     respond_to do |format|
       if @filefantasy.update(filefantasy_params)
@@ -71,6 +121,15 @@ class FilefantasiesController < ApplicationController
   def destroy
     if !user_signed_in?
       redirect_to :root
+    else
+      if current_user.user?
+        redirect_to :root
+      end
+    end
+    if user_signed_in?
+      if !current_user.first_name?
+        redirect_to edit_user_path(current_user)
+      end
     end
     @filefantasy.destroy
     respond_to do |format|
