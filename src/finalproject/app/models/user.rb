@@ -5,6 +5,7 @@ class User < ActiveRecord::Base
 	has_many :comments
 	has_many :filedownloads
 	has_many :fileuploads
+  before_save :set_default_type
 
 	enum user_type: [ :admin, :user ]
 

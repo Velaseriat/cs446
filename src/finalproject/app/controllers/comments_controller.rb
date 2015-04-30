@@ -4,6 +4,13 @@ class CommentsController < ApplicationController
   # GET /comments
   # GET /comments.json
   def index
+    if !user_signed_in?
+      redirect_to :root
+    else
+      if current_user.user?
+        redirect_to :root
+      end
+    end
     @comments = Comment.all
   end
 

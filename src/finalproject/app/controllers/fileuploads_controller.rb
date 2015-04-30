@@ -4,6 +4,11 @@ class FileuploadsController < ApplicationController
   # GET /fileuploads
   # GET /fileuploads.json
   def index
+    if user_signed_in?
+      if !current_user.first_name?
+        redirect_to edit_user_path(current_user)
+      end
+    end
     params[:direction] ||= "asc"
     params[:sort] ||= "filename"
     @fileuploads = Fileupload.includes(:user).order(params[:sort] + " " + params[:direction]).limit(25)
@@ -59,6 +64,10 @@ class FileuploadsController < ApplicationController
   def update
     if !user_signed_in?
       redirect_to :root
+    else
+      if current_user.user?
+        redirect_to :root
+      end
     end
     respond_to do |format|
       if @fileupload.update(fileupload_params)
@@ -76,6 +85,10 @@ class FileuploadsController < ApplicationController
   def destroy
     if !user_signed_in?
       redirect_to :root
+    else
+      if current_user.user?
+        redirect_to :root
+      end
     end
     @fileupload.destroy
     respond_to do |format|
