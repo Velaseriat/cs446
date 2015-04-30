@@ -9,6 +9,7 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+	<h2>
 	<% if !user_signed_in? %>
 		<%= link_to 'Sign IN!', new_user_session_path %>
 	<% else %>
@@ -17,7 +18,7 @@
 		
 	<% end %>
 	| <%= link_to 'DOWNLOADABLE FILES', fileuploads_path %>
-	| <%= link_to 'HOME', :root %>
+	| <%= link_to 'HOME', :root %></h2>
 <div class="container">
 	<div class="jumbotron">
 		<layer id="bannerAd"></layer><div id="banner1"></div>
