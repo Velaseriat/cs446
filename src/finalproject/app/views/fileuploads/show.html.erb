@@ -19,8 +19,8 @@
     	<%= f.hidden_field :fileupload_id, :value => @fileupload.id %>
     	<%= f.submit "Download" %>
     	<% if current_user.admin? %>
-			<%= link_to 'Edit', edit_fileupload_path(@fileupload) %> |
-			<%= link_to 'Back', fileuploads_path %>
-		<% end %>
+			 <%= link_to 'Edit', edit_fileupload_path(@fileupload) %> |
+		  <% end %>
+      <%= link_to 'Back', fileuploads_path %>
 	<% end %>
 <% end %>

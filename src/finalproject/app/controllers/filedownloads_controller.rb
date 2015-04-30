@@ -18,11 +18,17 @@ class FiledownloadsController < ApplicationController
 
   # GET /filedownloads/new
   def new
+    if !user_signed_in?
+      redirect_to :root
+    end
     @filedownload = Filedownload.new
   end
 
   # GET /filedownloads/1/edit
   def edit
+    if !user_signed_in?
+      redirect_to :root
+    end
   end
 
   def download_file fn
@@ -32,6 +38,9 @@ class FiledownloadsController < ApplicationController
   # POST /filedownloads
   # POST /filedownloads.json
   def create
+    if !user_signed_in?
+      redirect_to :root
+    end
     @filedownload = Filedownload.new(filedownload_params)
     if @filedownload.save
       download_file @filedownload
@@ -42,6 +51,9 @@ class FiledownloadsController < ApplicationController
   # PATCH/PUT /filedownloads/1
   # PATCH/PUT /filedownloads/1.json
   def update
+    if !user_signed_in?
+      redirect_to :root
+    end
     download_file @filedownload
     if @filedownload.update(filedownload_params)
        download_file @filedownload
@@ -51,6 +63,9 @@ class FiledownloadsController < ApplicationController
   # DELETE /filedownloads/1
   # DELETE /filedownloads/1.json
   def destroy
+    if !user_signed_in?
+      redirect_to :root
+    end
     @filedownload.destroy
     respond_to do |format|
       format.html { redirect_to filedownloads_url, notice: 'Filedownload was successfully destroyed.' }

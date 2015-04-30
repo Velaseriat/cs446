@@ -22,16 +22,25 @@ class FileuploadsController < ApplicationController
 
   # GET /fileuploads/new
   def new
+    if !user_signed_in?
+      redirect_to :root
+    end
     @fileupload = Fileupload.new
   end
 
   # GET /fileuploads/1/edit
   def edit
+    if !user_signed_in?
+      redirect_to :root
+    end
   end
 
   # POST /fileuploads
   # POST /fileuploads.json
   def create
+    if !user_signed_in?
+      redirect_to :root
+    end
     @fileupload = Fileupload.new(fileupload_params)
 
     respond_to do |format|
@@ -48,6 +57,9 @@ class FileuploadsController < ApplicationController
   # PATCH/PUT /fileuploads/1
   # PATCH/PUT /fileuploads/1.json
   def update
+    if !user_signed_in?
+      redirect_to :root
+    end
     respond_to do |format|
       if @fileupload.update(fileupload_params)
         format.html { redirect_to @fileupload, notice: 'Fileupload was successfully updated.' }
@@ -62,6 +74,9 @@ class FileuploadsController < ApplicationController
   # DELETE /fileuploads/1
   # DELETE /fileuploads/1.json
   def destroy
+    if !user_signed_in?
+      redirect_to :root
+    end
     @fileupload.destroy
     respond_to do |format|
       format.html { redirect_to fileuploads_url, notice: 'Fileupload was successfully destroyed.' }

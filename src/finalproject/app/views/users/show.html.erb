@@ -19,7 +19,22 @@
 <% if @filedownloads.count > 0 %>
 	<%= render template: "filedownloads/index" %>
 <% end %>
+<%= link_to 'Back', :back %> |
 <% if current_user.id == @user.id %>
-  <%= link_to 'Edit', edit_user_path(@user) %> |
+  <%= link_to 'Edit Profile', edit_user_path(@user) %>
+<br><br>
+<p>Upload new file here</P>
+
+<%= form_for Fileupload.new do |f| %>
+
+  <div class="field">
+    <%= f.hidden_field :user_id, :value => current_user.id %>
+  </div>
+  <div class="field">
+    <%= f.file_field :filename %>
+  </div>
+  <div class="actions">
+    <%= f.submit "Upload File"%>
+  </div>
 <% end %>
-<%= link_to 'Back', :back %>
+<% end %>

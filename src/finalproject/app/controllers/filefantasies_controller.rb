@@ -10,20 +10,32 @@ class FilefantasiesController < ApplicationController
   # GET /filefantasies/1
   # GET /filefantasies/1.json
   def show
+    if !user_signed_in?
+      redirect_to :root
+    end
   end
 
   # GET /filefantasies/new
   def new
+    if !user_signed_in?
+      redirect_to :root
+    end
     @filefantasy = Filefantasy.new
   end
 
   # GET /filefantasies/1/edit
   def edit
+    if !user_signed_in?
+      redirect_to :root
+    end
   end
 
   # POST /filefantasies
   # POST /filefantasies.json
   def create
+    if !user_signed_in?
+      redirect_to :root
+    end
     @filefantasy = Filefantasy.new(filefantasy_params)
 
     respond_to do |format|
@@ -40,6 +52,9 @@ class FilefantasiesController < ApplicationController
   # PATCH/PUT /filefantasies/1
   # PATCH/PUT /filefantasies/1.json
   def update
+    if !user_signed_in?
+      redirect_to :root
+    end
     respond_to do |format|
       if @filefantasy.update(filefantasy_params)
         format.html { redirect_to @filefantasy, notice: 'Filefantasy was successfully updated.' }
@@ -54,6 +69,9 @@ class FilefantasiesController < ApplicationController
   # DELETE /filefantasies/1
   # DELETE /filefantasies/1.json
   def destroy
+    if !user_signed_in?
+      redirect_to :root
+    end
     @filefantasy.destroy
     respond_to do |format|
       format.html { redirect_to filefantasies_url, notice: 'Filefantasy was successfully destroyed.' }

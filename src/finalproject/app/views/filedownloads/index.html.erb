@@ -4,7 +4,7 @@
       <thead>
         <tr>
           <th>Filename</th>
-          <th colspan="3"></th>
+          <th colspan="2"></th>
         </tr>
       </thead>
       <tbody>
@@ -14,17 +14,10 @@
             <% if user_signed_in? %>
               <td>
                 <%= link_to '', filedownload, :class => "glyphicon glyphicon-expand" %>
-                <%= link_to 'Download', filedownload %>
-              </td>
-            <% end %>
-            <% if user_signed_in? and (current_user.admin? or current_user.id == filedownload.fileupload.user_id) %>
-              <td>
-                <%= link_to '', edit_filedownload_path(filedownload), :class => "glyphicon glyphicon-edit" %>
-                <%= link_to 'Edit', edit_filedownload_path(filedownload) %>
+                <%= link_to 'View', filedownload %>
               </td>
               <td>
-                <%= link_to '', filedownload, :class => "glyphicon glyphicon-trash" %>
-                <%= link_to 'Remove', filedownload, method: :delete, data: { confirm: 'Are you sure?' } %>
+                <%= link_to filedownload.fileupload.user.first_name + " " + filedownload.fileupload.user.last_name, filedownload.fileupload.user %>
               </td>
             <% end %>
           </tr>
