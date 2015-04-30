@@ -10,7 +10,7 @@ class FileuploadsController < ApplicationController
       end
     end
     params[:direction] ||= "desc"
-    params[:sort] ||= "cached_votes_total"
+    params[:sort] ||= "cached_votes_score"
     @fileuploads = Fileupload.includes(:user).order(params[:sort] + " " + params[:direction]).limit(25)
   end
 
