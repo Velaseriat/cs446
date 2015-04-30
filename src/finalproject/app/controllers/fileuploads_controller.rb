@@ -4,8 +4,8 @@ class FileuploadsController < ApplicationController
   # GET /fileuploads
   # GET /fileuploads.json
   def index
-    params[:direction] ||= "asc"
-    params[:sort] ||= "filename"
+    params[:direction] ||= "desc"
+    params[:sort] ||= "cached_votes_total"
     @fileuploads = Fileupload.includes(:user).order(params[:sort] + " " + params[:direction]).limit(25)
   end
 

@@ -4,7 +4,12 @@ Rails.application.routes.draw do
 
   resources :comments
 
-  resources :filedownloads
+  resources :filedownloads do
+    member do
+      put "like", to: "filedownloads#upvote"
+      put "dislike", to: "filedownloads#downvote"
+    end
+  end
 
   resources :fileuploads
 

@@ -5,6 +5,7 @@ class User < ActiveRecord::Base
 	has_many :comments
 	has_many :filedownloads
 	has_many :fileuploads
+  acts_as_voter
 
 	enum user_type: [ :admin, :user ]
 

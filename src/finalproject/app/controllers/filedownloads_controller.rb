@@ -35,6 +35,20 @@ class FiledownloadsController < ApplicationController
     send_file File.join(Rails.root, 'public/' + fn.fileupload.filename.to_s), :x_sendfile=>true
   end
 
+  def upvote
+    @fileupload = Filedownload.find(params[:id]).fileupload
+    @fileupload.undisliked_by current_user
+    @fileupload.liked_by current_user
+    redirect_to @fileupload
+  end
+
+  def downvote
+    @fileupload = Filedownload.find(params[:id]).fileupload
+    @fileupload.unliked_by current_user
+    @fileupload.disliked_by current_user
+    redirect_to @fileupload
+  end
+
   # POST /filedownloads
   # POST /filedownloads.json
   def create

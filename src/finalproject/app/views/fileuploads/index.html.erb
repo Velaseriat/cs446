@@ -4,6 +4,7 @@
     <thead>
       <tr>
         <% direc = params[:direction] == "asc" ? "desc" : "asc" %>
+        <th><%= link_to "Votes", :sort => "cached_votes_total", :direction => direc %></th>
         <th><%= link_to "Filename", :sort => "filename", :direction => direc %></th>
         <th><%= link_to "Time", :sort => "created_at", :direction => direc %></th>
         <th><%= link_to "User", :sort => "users.first_name", :direction => direc %></th>
@@ -13,6 +14,7 @@
     <tbody>
       <% @fileuploads.each do |fileupload| %>
         <tr>
+        <td><%= fileupload.cached_votes_score %></td>
           <td><%= fileupload.filename %></td>
           <td><%= fileupload.created_at %></td>
           <td><%= fileupload.user.first_name + " " + fileupload.user.last_name %></td>

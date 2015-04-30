@@ -8,6 +8,17 @@
         </div>
 		<% if user_signed_in? %>
 			<% if current_user.admin? or current_user == filedownload.user %>
+                <% if current_user.voted_up_on? filedownload.fileupload %>
+                    <%= link_to "Upvote", like_filedownload_path(filedownload), {method: :put, :class=>"btn btn-success"} %>
+                    <%= link_to "Downvote", dislike_filedownload_path(filedownload), {method: :put, :class=>"btn btn-default"} %>
+                <% elsif current_user.voted_down_on? filedownload.fileupload %>
+                    <%= link_to "Upvote", like_filedownload_path(filedownload), {method: :put, :class=>"btn btn-default"} %>
+                    <%= link_to "Downvote", dislike_filedownload_path(filedownload), {method: :put, :class=>"btn btn-success"} %>
+                <% else %>
+                    <%= link_to "Upvote", like_filedownload_path(filedownload), {method: :put, :class=>"btn btn-default"} %>
+                    <%= link_to "Downvote", dislike_filedownload_path(filedownload), {method: :put, :class=>"btn btn-default"} %>
+                <% end %>
+
     			<%= form_for Comment.new, remote: true do |f| %>
     				<%= f.hidden_field :user_id, :value => current_user.id %>
     				<%= f.hidden_field :filedownload_id, :value => filedownload.id %>
