@@ -1,3 +1,4 @@
+<div class=<%= "commentid"+comment.id.to_s %>>
 <div class="panel panel-default">
 	<div class="panel-heading"><%= link_to comment.user.first_name + " " + comment.user.last_name, comment.user %></div>
 	<div class="panel-body">
@@ -5,9 +6,10 @@
             <% if user_signed_in? %>
                 <% if current_user.admin? or current_user == comment.user %>
                 	<br>
-					<span class="glyphicon glyphicon-edit" aria-hidden="true"></span> <%= link_to 'Edit', edit_comment_path(comment) %>
+					<span class="glyphicon glyphicon-edit" aria-hidden="true"></span> <%= link_to 'Edit', edit_comment_path(comment), remote: true %>
 					<span class="glyphicon glyphicon-trash" aria-hidden="true"></span> <%= link_to 'Remove', comment, method: :delete, data: { confirm: 'Are you sure?'} %>
 				<% end %>
 		<% end %>
 	</div>
+</div>
 </div>

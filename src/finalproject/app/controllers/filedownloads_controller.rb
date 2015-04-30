@@ -1,13 +1,6 @@
 class FiledownloadsController < ApplicationController
   before_action :set_filedownload, only: [:show, :edit, :update, :destroy]
 
-  def make_comment fd
-    respond_to do |format|
-      format.html { redirect_to fd }
-    end
-  end
-
-
   # GET /filedownloads
   # GET /filedownloads.json
   def index

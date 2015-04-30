@@ -13,17 +13,13 @@
   <%= @user.age %>
 </p>
 
-<p>
-  <strong>User type:</strong>
-  <%= @user.user_type %>
-</p>
-
 <% if @fileuploads.count > 0 %>
 	<%= render template: "fileuploads/index" %>
 <% end %>
 <% if @filedownloads.count > 0 %>
 	<%= render template: "filedownloads/index" %>
 <% end %>
-
-<%= link_to 'Edit', edit_user_path(@user) %> |
-<%= link_to 'Back', users_path %>
+<% if current_user.id == @user.id %>
+  <%= link_to 'Edit', edit_user_path(@user) %> |
+<% end %>
+<%= link_to 'Back', :back %>

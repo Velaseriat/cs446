@@ -1,4 +1,5 @@
-<%= form_for(@comment) do |f| %>
+
+<%= form_for @comment, remote: true do |f| %>
   <% if @comment.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@comment.errors.count, "error") %> prohibited this comment from being saved:</h2>
@@ -10,20 +11,18 @@
       </ul>
     </div>
   <% end %>
+  <%= f.hidden_field :user_id %>
+  <%= f.hidden_field :filedownload_id %>
+  
+<div class="panel panel-default">
+  <div class="panel-heading"><%= link_to @comment.user.first_name + " " + @comment.user.last_name, @comment.user %></div>
+  <div class="panel-body">
+    <div class="input-group">
+      <%= f.text_field :data, :class => "form-control", :placeholder => "Add comment", :text => "text" %>
+      <span class="input-group-btn"><%= f.submit "Edit", :class => "btn btn-default" %></span>
+    </div>
+  </div>
+</div>
 
-  <div class="field" type = "hidden">
-    <%= f.label :user_id %><br>
-    <%= f.number_field :user_id %>
-  </div>
-  <div class="field">
-    <%= f.label :filedownload_id %><br>
-    <%= f.number_field :filedownload_id %>
-  </div>
-  <div class="field">
-    <%= f.label :data %><br>
-    <%= f.text_field :data %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
 <% end %>
+
