@@ -40,3 +40,5 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin]
 gem 'devise'
 gem 'bootstrap-sass'
 gem 'acts_as_votable', '~> 0.10.0'
+gem 'twitter'
+gem 't'

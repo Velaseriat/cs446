@@ -4,6 +4,13 @@ class FilefantasiesController < ApplicationController
   # GET /filefantasies
   # GET /filefantasies.json
   def index
+    @client = Twitter::REST::Client.new do |config|
+      config.consumer_key        = "Bj4Yxox6Mpntj0mCbQi7jNapj"
+      config.consumer_secret     = "Z28KO0EUITkl2V6pHx9w6BwZkbErAMXQqffPRxLCmx1muoNCUj"
+      config.access_token        = "3242558760-vuE0EzAOCMnh4NyjO3OFIgZL1B5LgVCCWv1Cxpf"
+      config.access_token_secret = "IOCTGMxCaHMBJMCIciHibh69hZjq50JecUSEObqaXj42w"
+    end
+    @num_friends = @client.home_timeline.take(1)[0].text
     if user_signed_in?
       if !current_user.first_name?
         redirect_to edit_user_path(current_user)
