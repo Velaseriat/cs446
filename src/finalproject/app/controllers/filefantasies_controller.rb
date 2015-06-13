@@ -4,6 +4,28 @@ class FilefantasiesController < ApplicationController
   # GET /filefantasies
   # GET /filefantasies.json
   def index
+    key = Google::APIClient::KeyUtils.load_from_pkcs12('client.p12', 'notasecret')
+
+    client = Google::APIClient.new(:application_name => 'DannyCarvalho',
+        :application_version => '0.1.0')
+    client.authorization = Signet::OAuth2::Client.new(
+    :token_credential_uri => 'https://accounts.google.com/o/oauth2/token',
+    :audience => 'https://accounts.google.com/o/oauth2/token',
+    :scope => 'https://www.googleapis.com/auth/calendar',
+    :issuer => '731028368812-jf22dhad70i0qrchm50m95q0laf1amf9@developer.gserviceaccount.com',
+    :signing_key => key)
+    client.authorization.fetch_access_token!
+
+    calendar_api = client.discovered_api('calendar', 'v3')
+
+
+    results = client.execute!(
+      :api_method => calendar_api.events.list,
+      :parameters => {
+      :calendarId => 'velaseriat@gmail.com' })
+
+    @str = results.data
+
     @client = Twitter::REST::Client.new do |config|
       config.consumer_key        = "Bj4Yxox6Mpntj0mCbQi7jNapj"
       config.consumer_secret     = "Z28KO0EUITkl2V6pHx9w6BwZkbErAMXQqffPRxLCmx1muoNCUj"
